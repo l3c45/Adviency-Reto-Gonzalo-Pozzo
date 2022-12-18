@@ -1,10 +1,11 @@
-
+import bkgnd from "./assets/background.jpeg"
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-    <div>
+    <div style={{backgroundImage: `url(${bkgnd})`,backgroundSize:"cover"
+  }} className="App">
+    <div className="list">
       <h1>Regalos:</h1>
       <ul>
         <li>Reloj</li>
