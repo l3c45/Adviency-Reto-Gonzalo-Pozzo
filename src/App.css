@@ -12,7 +12,7 @@
 }
 
 .list {
-  background-color: red;
+  background-color: #C21010;
   height: 60%;
   display: flex;
   align-items: center;
@@ -40,6 +40,9 @@
 }
 
 .list ul li {
+  margin: 2px 0;
+  display: flex;
+  justify-content: space-between;
   text-align: center;
 }
 
@@ -70,6 +73,14 @@
 
 .giftButton:hover{
   opacity: .9;
+}
+
+.deleteBtn{
+  background-color: red;
+  border:none;
+  width: 10%;
+  color:#fff
+
 }
 
 

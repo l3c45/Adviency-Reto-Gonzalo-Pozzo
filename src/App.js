@@ -11,6 +11,12 @@ function App() {
     temp.push(gift)
     setGifts(temp)
   }
+
+  const deleteGift=(index)=>{
+    const temp=[...gifts]
+    const deleted=temp.filter((gift,i)=>i!==index)
+    setGifts(deleted)
+  }
   return (
     <div
       style={{ backgroundImage: `url(${bkgnd})`, backgroundSize: "cover" }}
@@ -22,7 +28,7 @@ function App() {
 
         <ul>
         {gifts.map((gift,i)=>{
-          return <li key={i}  >{gift}</li>
+          return <li key={i}  >{gift}<button onClick={()=>deleteGift(i)} className="deleteBtn">X</button></li>
         })}
           
         </ul>
