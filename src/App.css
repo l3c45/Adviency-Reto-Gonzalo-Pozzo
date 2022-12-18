@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Christbell';
+  src: local('Christbell'), url(./fonts/Christbell.ttf) format('truetype');
+}
+
 .App {
   text-align: center;
   height: 100vh;
@@ -7,26 +12,65 @@
 }
 
 .list {
+  background-color: red;
+  height: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1rem;
   border:2px solid #fff;
 }
 .list h1{
+  margin: 1rem;
   font-size: 3rem;
+  font-family: "Christbell";
 }
 
 .list h1, ul{
   color:#fff
 }
 .list ul {
-  font-size: 2rem;
+  width: 100%;
+  overflow-y: auto;
+  max-height: 50%;
+  font-size: 1.5rem;
   padding: 0;
   list-style: none;
 }
 
 .list ul li {
-  text-align: start;
+  text-align: center;
 }
+
+.giftForm{
+  width: 100%;
+  height: 2rem;
+}
+
+.giftInput{
+  padding: 0;
+ border: none; 
+  height: 100%;
+  width: 60%;
+}
+
+.giftInput:focus {
+ outline: none; 
+}
+.giftButton{
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: green;
+  border:none;
+  height: 100%;
+  width: 30%;
+}
+
+.giftButton:hover{
+  opacity: .9;
+}
+
+
+
