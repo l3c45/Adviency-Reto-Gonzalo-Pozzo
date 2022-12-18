@@ -32,6 +32,7 @@ function App() {
         })}
           
         </ul>
+        <button onClick={()=>setGifts([])} className="deleteAll">Borrar todos</button>
       </div>
     </div>
   );

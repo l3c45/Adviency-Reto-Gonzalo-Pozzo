@@ -12,6 +12,7 @@
 }
 
 .list {
+  position: relative;
   background-color: #C21010;
   height: 60%;
   display: flex;
@@ -81,6 +82,17 @@
   width: 10%;
   color:#fff
 
+}
+
+.deleteAll{
+  width: 90%;
+  background-color: red;
+  color:#fff;
+  border:none;
+  height: 2rem;
+  font-weight: bold;
+  position: absolute;
+  bottom: 10px;
 }
 
 
