@@ -1,14 +1,21 @@
 import bkgnd from "./assets/background.jpeg";
 import "./App.css";
 import Form from "./components/Form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [gifts, setGifts] = useState([
-    { name: "Pelota", quantity: "" },
-    { name: "Tablet", quantity: "" },
-    { name: "Pulsera", quantity: "" },
-  ]);
+  const savedGifts = JSON.parse(localStorage.getItem("gifts"));
+  const [gifts, setGifts] = useState(
+    savedGifts || [
+      { name: "Pelota", quantity: "" },
+      { name: "Tablet", quantity: "" },
+      { name: "Pulsera", quantity: "" },
+    ]
+  );
+
+  useEffect(() => {
+    localStorage.setItem("gifts", JSON.stringify(gifts));
+  }, [gifts]);
 
   const addGift = (gift) => {
     const temp = [...gifts];
