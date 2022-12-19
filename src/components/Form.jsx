@@ -60,6 +60,17 @@ function Form({ add, close, defaultData }) {
         value={input.url}
       ></input>
       <input
+        placeholder="Precio"
+        className="giftInput"
+        onChange={(e) =>
+          setInput((prev) => {
+            return { ...prev, price: e.target.value };
+          })
+        }
+        type={"number"}
+        value={input.price}
+      ></input>
+      <input
         className="giftQuantity"
         onChange={(e) =>
           setInput((prev) => {

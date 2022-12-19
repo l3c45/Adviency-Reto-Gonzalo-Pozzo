@@ -90,7 +90,7 @@ function App() {
                 <div>
                   <span className="line">
                     {gift.name}
-                    {gift.quantity !== "" ? ` X${gift.quantity}` : null}
+                    {gift.quantity !== "" ? ` ${gift.quantity}u     --$${gift.price*gift.quantity}` : null}
                   </span>
                   <span className="line who">
                     {gift.user ? gift.user : null}
