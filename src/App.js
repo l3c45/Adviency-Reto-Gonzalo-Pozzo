@@ -4,26 +4,31 @@ import { useState, useEffect } from "react";
 import Modal from "./components/Modal";
 import useModal from "./hooks/useModal";
 import { nanoid } from "nanoid";
+import { req } from "./API/request";
+import Loading from "./components/Loading";
 
 function App() {
   const savedGifts = JSON.parse(localStorage.getItem("gifts"));
   const [gifts, setGifts] = useState(
-    savedGifts || [
-      { name: "Pelota", quantity: "", id: nanoid() },
-      { name: "Tablet", quantity: "", id: nanoid() },
-      { name: "Pulsera", quantity: "", id: nanoid() },
-    ]
+    savedGifts || []
   );
+  const [loading, setLoading] = useState(false)
   const { isVisible, toggleModal, defaultData, toggleModalEdit } = useModal();
   const imgUrl =
     "https://w7.pngwing.com/pngs/627/370/png-transparent-christmas-gift-gifts-to-send-non-stop-miscellaneous-ribbon-wedding.png";
 
   useEffect(() => {
+   // setLoading(true)
+    //const gifts=req()
+    //if(gifts){
+    //  setGifts(gifts)
+    //  setLoading(false)
+    //}
     localStorage.setItem("gifts", JSON.stringify(gifts));
   }, [gifts]);
 
   const addGift = (gift) => {
-    console.log(gift);
+  
 
     if (gift.name.length !== 0) {
       const temp = [...gifts];
@@ -61,7 +66,7 @@ function App() {
         add={addGift}
         data={defaultData}
       />
-      <div className="list">
+      {loading?<Loading></Loading>:<div className="list">
         <h1>Regalos:</h1>
 
         <button  className="openModal" onClick={() => toggleModal()}>
@@ -112,7 +117,7 @@ function App() {
         <button onClick={() => setGifts([])} className="deleteAll">
           Borrar todos
         </button>
-      </div>
+      </div>}
     </div>
   );
 }
