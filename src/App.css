@@ -1,10 +1,9 @@
 @font-face {
-  font-family: 'Christbell';
-  src: local('Christbell'), url(./fonts/Christbell.ttf) format('truetype');
+  font-family: "Christbell";
+  src: local("Christbell"), url(./fonts/Christbell.ttf) format("truetype");
 }
 
 .App {
-  
   text-align: center;
   height: 100vh;
   display: flex;
@@ -14,30 +13,32 @@
 
 .list {
   min-width: 390px;
+  max-width: 80%;
   position: relative;
-  background-color: #C21010;
-  height: 60%;
+  background-color: #c21010;
+  max-height: 90%;
   display: flex;
   align-items: center;
-  justify-content: center;
+ 
   flex-direction: column;
   padding: 1rem;
-  border:2px solid #fff;
+  border: 2px solid #fff;
 }
-.list h1{
+.list h1 {
   margin: 1rem;
   font-size: 3rem;
   font-family: "Christbell";
 }
 
-.list h1, ul{
-  color:#fff
+.list h1,
+ul {
+  color: #fff;
 }
 .list ul {
-  width: 100%;
+  width: 90%;
   overflow-y: auto;
-  max-height: 70%;
-  font-size: 1.5rem;
+ max-height: 50%;
+  
   padding: 0;
   list-style: none;
 }
@@ -51,31 +52,28 @@
   text-align: center;
 }
 
-.giftForm{
+.giftForm {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  height:80%;
+  height: 80%;
 }
 
-.giftInput{
-  margin:2px;
+.giftInput {
+  margin: 2px;
   padding: 0;
- border: none; 
+  border: none;
   height: 2rem;
   width: 90%;
 }
-.giftInputGroup{
- 
- 
- 
+.giftInputGroup {
   display: flex;
   width: 90%;
 }
-.giftInputName{
-  border: none; 
+.giftInputName {
+  border: none;
   height: 2rem;
   width: 70%;
   padding: 0;
@@ -90,63 +88,49 @@
   font-size: 0.8rem;
   font-weight: bold;
   background-color: green;
-  border:none;
- 
+  border: none;
 }
-.giftInput:focus,.giftQuantity:focus {
- 
+.giftInput:focus,
+.giftQuantity:focus {
 }
-.giftButton{
-  margin:2px;
+.giftButton {
+  margin: 2px;
   padding: 0;
   font-size: 0.8rem;
   font-weight: bold;
   background-color: green;
-  border:none;
+  border: none;
   height: 2rem;
   width: 90%;
 }
 
-.giftButton:hover{
-  opacity: .9;
+.giftButton:hover {
+  opacity: 0.9;
 }
 
-.giftQuantity{
-  margin:2px;
+.giftQuantity {
+  margin: 2px;
   border-left: 1px solid red;
   padding: 0;
-  border: none; 
+  border: none;
   height: 2rem;
-   width: 90%;
-
+  width: 90%;
 }
 
-
-
-.deleteBtn{
+.deleteBtn {
+  margin: 0 5px;
   background-color: red;
-  border:none;
+  border: none;
   width: 1rem;
-  color:#fff
-
+  color: #fff;
 }
 
-.deleteAll{
-  width: 80%;
-  background-color: red;
-  color:#fff;
-  border:none;
-  height: 2rem;
-  font-weight: bold;
-  position: absolute;
-  bottom: 10px;
-}
 
-.emptyList{
+.emptyList {
   font-size: 1rem;
 }
 
-.giftPic{
+.giftPic {
   height: 3rem;
   width: 4rem;
 }
@@ -156,10 +140,12 @@
   font-size: 0.8rem;
   font-weight: bold;
   background-color: green;
-  border:none;
+  border: none;
   height: 2rem;
 }
 .line {
+
+  
   text-align: left;
   display: block;
   font-size: 1.5rem;
@@ -167,24 +153,49 @@
 
 .who {
   font-style: italic;
-  color:#000;
+  color: #000;
   font-size: 1rem;
 }
 
 .editBtn {
-  margin: 0 10px;
+  margin: 0 5px;
   background-color: green;
-  border:none;
+  border: none;
   width: 1rem;
-  color:#fff
+  color: #fff;
 }
 
 .total {
+  /* position: absolute;
+  bottom: 50px; */
   width: 100%;
   display: block;
   font-weight: bold;
   border-top: #fff 1px solid;
-  color:#fff
+  color: #fff;
 }
 
+.deleteAll {
+  width: 80%;
+  background-color: red;
+  color: #fff;
+  border: none;
+  height: 2rem;
+  font-weight: bold;
+  padding:10px 0
+  /* position: absolute;
+  bottom: 10px; */
+}
 
+ 
+.footer{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 5rem;
+  width: 95%;
+  background-color: #c21010;
+  /* position: absolute;
+  bottom:0px; */
+}

@@ -11,7 +11,7 @@ function App() {
   const savedGifts = JSON.parse(localStorage.getItem("gifts"));
   const [gifts, setGifts] = useState(savedGifts || []);
   const [loading, setLoading] = useState(false);
-  const { isVisible, toggleModal, defaultData, toggleModalEdit } = useModal();
+  const { isVisible, toggleModal, defaultData, toggleModalEdit,duplicate } = useModal();
   const imgUrl =
     "https://w7.pngwing.com/pngs/627/370/png-transparent-christmas-gift-gifts-to-send-non-stop-miscellaneous-ribbon-wedding.png";
 
@@ -72,11 +72,7 @@ function App() {
           </button>
 
           <ul>
-            {gifts.length === 0 ? (
-              <p className="emptyList">
-                No Hay regalos en la lista. Por que no agragas alguno?
-              </p>
-            ) : null}
+            
             {gifts.map((gift, i) => {
               return (
                 <li key={gift.id}>
@@ -106,6 +102,12 @@ function App() {
                       E
                     </button>
                     <button
+                      onClick={() => duplicate(gift)}
+                      className="editBtn"
+                    >
+                      D
+                    </button>
+                    <button
                       onClick={() => deleteGift(gift.id)}
                       className="deleteBtn"
                     >
@@ -116,7 +118,12 @@ function App() {
               );
             })}
           </ul>
-          <span className="total">
+          {gifts.length === 0 ? (
+              <p className="emptyList">
+                No Hay regalos en la lista. Por que no agragas alguno?
+              </p>
+            ) : <div className="footer">
+            <span className="total">
             TOTAL:{" "}
             {gifts
               .reduce((acc, val) => {
@@ -127,6 +134,8 @@ function App() {
           <button onClick={() => setGifts([])} className="deleteAll">
             Borrar todos
           </button>
+            </div>}
+          
         </div>
       )}
     </div>
