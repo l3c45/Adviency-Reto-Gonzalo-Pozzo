@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Form({ add }) {
+function Form({ add,close }) {
   
 
   const [input, setInput] = useState({ name: "", quantity: "",url:"" });
@@ -8,6 +8,7 @@ function Form({ add }) {
     e.preventDefault();
     add(input);
     setInput({ name: "", quantity: "" ,url:""});
+    close()
   };
   return (
     <form className="giftForm" onSubmit={(e) => saveGift(e)}>

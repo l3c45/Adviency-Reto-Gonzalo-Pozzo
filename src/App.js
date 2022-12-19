@@ -1,7 +1,8 @@
 import bkgnd from "./assets/background.jpeg";
 import "./App.css";
-import Form from "./components/Form";
 import { useState, useEffect } from "react";
+import Modal from "./components/Modal";
+import useModal from "./hooks/useModal";
 
 function App() {
   const savedGifts = JSON.parse(localStorage.getItem("gifts"));
@@ -12,7 +13,7 @@ function App() {
       { name: "Pulsera", quantity: "" },
     ]
   );
-
+  const {isVisible, toggleModal} = useModal();
   const imgUrl="https://w7.pngwing.com/pngs/627/370/png-transparent-christmas-gift-gifts-to-send-non-stop-miscellaneous-ribbon-wedding.png"
 
   useEffect(() => {
@@ -41,8 +42,9 @@ function App() {
     >
       <div className="list">
         <h1>Regalos:</h1>
-        <Form add={addGift} />
-
+       
+        <button className="openModal" onClick={()=>toggleModal() }>Agregar Regalo</button>
+        <Modal isVisible={isVisible} hideModal={toggleModal} add={addGift}/>
         <ul>
           {gifts.length === 0 ? (
             <p className="emptyList">
