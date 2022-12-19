@@ -13,6 +13,8 @@ function App() {
     ]
   );
 
+  const imgUrl="https://w7.pngwing.com/pngs/627/370/png-transparent-christmas-gift-gifts-to-send-non-stop-miscellaneous-ribbon-wedding.png"
+
   useEffect(() => {
     localStorage.setItem("gifts", JSON.stringify(gifts));
   }, [gifts]);
@@ -50,6 +52,7 @@ function App() {
           {gifts.map((gift, i) => {
             return (
               <li key={i}>
+            <img className="giftPic" alt="Gift" src={gift.url || imgUrl}></img>
                 {gift.name}
                 {gift.quantity !== "" ? ` X${gift.quantity}` : null}
                 <button onClick={() => deleteGift(i)} className="deleteBtn">

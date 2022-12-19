@@ -54,10 +54,11 @@
 }
 
 .giftInput{
+  margin:2px;
   padding: 0;
  border: none; 
   height: 100%;
-  width: 60%;
+  width: 25%;
 }
 
 .giftInput:focus,.giftQuantity:focus {
@@ -109,6 +110,11 @@
 
 .emptyList{
   font-size: 1rem;
+}
+
+.giftPic{
+  height: 3rem;
+  width: 4rem;
 }
 
 

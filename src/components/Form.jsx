@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 
 function Form({ add }) {
-  const [input, setInput] = useState({ name: "", quantity: "" });
+  
 
+  const [input, setInput] = useState({ name: "", quantity: "",url:"" });
   const saveGift = (e) => {
     e.preventDefault();
     add(input);
-    setInput({ name: "", quantity: "" });
+    setInput({ name: "", quantity: "" ,url:""});
   };
   return (
     <form className="giftForm" onSubmit={(e) => saveGift(e)}>
       <input
+      placeholder="Regalo"
         className="giftInput"
         onChange={(e) =>
           setInput((prev) => {
@@ -19,6 +21,17 @@ function Form({ add }) {
         }
         type={"text"}
         value={input.name}
+      ></input>
+      <input
+      placeholder="Imagen"
+        className="giftInput"
+        onChange={(e) =>
+          setInput((prev) => {
+            return { ...prev, url: e.target.value };
+          })
+        }
+        type={"url"}
+        value={input.url}
       ></input>
       <input
         className="giftQuantity"
