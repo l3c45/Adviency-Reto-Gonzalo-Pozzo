@@ -3,11 +3,11 @@ import React, { useState } from "react";
 function Form({ add,close }) {
   
 
-  const [input, setInput] = useState({ name: "", quantity: "",url:"" });
+  const [input, setInput] = useState({ name: "", quantity: "",url:"",user:"" });
   const saveGift = (e) => {
     e.preventDefault();
     add(input);
-    setInput({ name: "", quantity: "" ,url:""});
+    setInput({ name: "", quantity: "" ,url:"",user:""});
     close()
   };
   return (
@@ -22,6 +22,17 @@ function Form({ add,close }) {
         }
         type={"text"}
         value={input.name}
+      ></input>
+      <input
+      placeholder="Destinatario"
+        className="giftInput"
+        onChange={(e) =>
+          setInput((prev) => {
+            return { ...prev, user: e.target.value };
+          })
+        }
+        type={"text"}
+        value={input.user}
       ></input>
       <input
       placeholder="Imagen"

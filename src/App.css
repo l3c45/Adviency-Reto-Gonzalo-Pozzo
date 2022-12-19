@@ -43,9 +43,11 @@
 }
 
 .list ul li {
+  height: 3rem;
   margin: 2px 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
 }
 
@@ -99,7 +101,7 @@
 .deleteBtn{
   background-color: red;
   border:none;
-  width: 10%;
+  width: 1rem;
   color:#fff
 
 }
@@ -132,6 +134,16 @@
   border:none;
   height: 2rem;
 }
+.line {
+  text-align: left;
+  display: block;
+  font-size: 1.5rem;
+}
 
+.who {
+  font-style: italic;
+  color:#000;
+  font-size: 1rem;
+}
 
 

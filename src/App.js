@@ -55,8 +55,12 @@ function App() {
             return (
               <li key={i}>
             <img className="giftPic" alt="Gift" src={gift.url || imgUrl}></img>
-                {gift.name}
-                {gift.quantity !== "" ? ` X${gift.quantity}` : null}
+              <div>
+              <span className="line">{gift.name}
+                {gift.quantity !== "" ? ` X${gift.quantity}` : null}</span>
+                <span  className="line who" >{gift.user?gift.user:null}</span>
+
+              </div> 
                 <button onClick={() => deleteGift(i)} className="deleteBtn">
                   X
                 </button>
