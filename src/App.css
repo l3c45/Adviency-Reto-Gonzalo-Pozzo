@@ -60,7 +60,7 @@
   width: 60%;
 }
 
-.giftInput:focus {
+.giftInput:focus,.giftQuantity:focus {
  outline: none; 
 }
 .giftButton{
@@ -70,12 +70,23 @@
   background-color: green;
   border:none;
   height: 100%;
-  width: 30%;
+  width: 20%;
 }
 
 .giftButton:hover{
   opacity: .9;
 }
+
+.giftQuantity{
+  border-left: 1px solid red;
+  padding: 0;
+  border: none; 
+   height: 100%;
+   width: 15%;
+
+}
+
+
 
 .deleteBtn{
   background-color: red;
