@@ -1,27 +1,42 @@
+import { random } from "nanoid";
 import React, { useState } from "react";
 
 function Form({ add, close, defaultData }) {
   const [input, setInput] = useState(defaultData);
+  const randomGifts=["Pelota","Reloj","Pulsera"]
   const saveGift = (e) => {
     e.preventDefault();
     add(input);
     setInput(defaultData);
     close();
   };
+
+  const random =(e)=>{
+    
+    e.preventDefault()
+    const randomIndex=Math.floor(Math.random()*randomGifts.length)
+    
+    setInput(prev=>{return{
+      ...prev,
+      name:randomGifts[randomIndex]
+    }})
+  }
   return (
     <form className="giftForm" onSubmit={(e) => saveGift(e)}>
-      <input
-     
-        placeholder="Regalo"
-        className="giftInput"
-        onChange={(e) =>
-          setInput((prev) => {
-            return { ...prev, name: e.target.value };
-          })
-        }
-        type={"text"}
-        value={input.name}
-      ></input>
+      <div className="giftInputGroup">
+        <input
+          placeholder="Regalo"
+          className="giftInputName"
+          onChange={(e) =>
+            setInput((prev) => {
+              return { ...prev, name: e.target.value };
+            })
+          }
+          type={"text"}
+          value={input.name}
+        ></input>
+        <button className="randomBtn" onClick={(e)=>random(e)}>Sorprendeme!</button>
+      </div>
       <input
         placeholder="Destinatario"
         className="giftInput"

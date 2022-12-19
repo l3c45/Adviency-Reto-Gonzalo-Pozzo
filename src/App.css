@@ -67,7 +67,32 @@
   height: 2rem;
   width: 90%;
 }
+.giftInputGroup{
+ 
+ 
+ 
+  display: flex;
+  width: 90%;
+}
+.giftInputName{
+  border: none; 
+  height: 2rem;
+  width: 70%;
+  padding: 0;
+}
 
+.randomBtn {
+  padding: 0;
+  width: 30%;
+  height: 2rem;
+  margin: 0 2px;
+
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: green;
+  border:none;
+ 
+}
 .giftInput:focus,.giftQuantity:focus {
  
 }
