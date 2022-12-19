@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 
-function Form({ add,close }) {
-  
-
-  const [input, setInput] = useState({ name: "", quantity: "",url:"",user:"" });
+function Form({ add, close, defaultData }) {
+  const [input, setInput] = useState(defaultData);
   const saveGift = (e) => {
     e.preventDefault();
     add(input);
-    setInput({ name: "", quantity: "" ,url:"",user:""});
-    close()
+    setInput(defaultData);
+    close();
   };
   return (
     <form className="giftForm" onSubmit={(e) => saveGift(e)}>
       <input
-      placeholder="Regalo"
+        placeholder="Regalo"
         className="giftInput"
         onChange={(e) =>
           setInput((prev) => {
@@ -24,7 +22,7 @@ function Form({ add,close }) {
         value={input.name}
       ></input>
       <input
-      placeholder="Destinatario"
+        placeholder="Destinatario"
         className="giftInput"
         onChange={(e) =>
           setInput((prev) => {
@@ -35,7 +33,7 @@ function Form({ add,close }) {
         value={input.user}
       ></input>
       <input
-      placeholder="Imagen"
+        placeholder="Imagen"
         className="giftInput"
         onChange={(e) =>
           setInput((prev) => {

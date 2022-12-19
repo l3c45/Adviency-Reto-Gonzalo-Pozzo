@@ -3,48 +3,71 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import Modal from "./components/Modal";
 import useModal from "./hooks/useModal";
+import { nanoid } from "nanoid";
 
 function App() {
   const savedGifts = JSON.parse(localStorage.getItem("gifts"));
   const [gifts, setGifts] = useState(
     savedGifts || [
-      { name: "Pelota", quantity: "" },
-      { name: "Tablet", quantity: "" },
-      { name: "Pulsera", quantity: "" },
+      { name: "Pelota", quantity: "", id: nanoid() },
+      { name: "Tablet", quantity: "", id: nanoid() },
+      { name: "Pulsera", quantity: "", id: nanoid() },
     ]
   );
-  const {isVisible, toggleModal} = useModal();
-  const imgUrl="https://w7.pngwing.com/pngs/627/370/png-transparent-christmas-gift-gifts-to-send-non-stop-miscellaneous-ribbon-wedding.png"
+  const { isVisible, toggleModal, defaultData, toggleModalEdit } = useModal();
+  const imgUrl =
+    "https://w7.pngwing.com/pngs/627/370/png-transparent-christmas-gift-gifts-to-send-non-stop-miscellaneous-ribbon-wedding.png";
 
   useEffect(() => {
     localStorage.setItem("gifts", JSON.stringify(gifts));
   }, [gifts]);
 
   const addGift = (gift) => {
-    const temp = [...gifts];
+    console.log(gift);
+
     if (gift.name.length !== 0) {
-      temp.push(gift);
-      setGifts(temp);
+      const temp = [...gifts];
+      const filtered = temp.filter((item) => item.id !== gift.id);
+
+      if (filtered.length === temp.length) {
+        const id = nanoid();
+        const obj = { ...gift, id };
+        temp.push(obj);
+        setGifts(temp);
+      } else {
+        filtered.push(gift);
+        setGifts(filtered);
+      }
     } else {
       console.log("repetido o vacio");
     }
   };
 
-  const deleteGift = (index) => {
+  const deleteGift = (id) => {
     const temp = [...gifts];
-    const deleted = temp.filter((gift, i) => i !== index);
+    const deleted = temp.filter((gift) => gift.id !== id);
     setGifts(deleted);
   };
+
+
   return (
     <div
       style={{ backgroundImage: `url(${bkgnd})`, backgroundSize: "cover" }}
       className="App"
     >
+      <Modal
+        isVisible={isVisible}
+        hideModal={toggleModal}
+        add={addGift}
+        data={defaultData}
+      />
       <div className="list">
         <h1>Regalos:</h1>
-       
-        <button className="openModal" onClick={()=>toggleModal() }>Agregar Regalo</button>
-        <Modal isVisible={isVisible} hideModal={toggleModal} add={addGift}/>
+
+        <button className="openModal" onClick={() => toggleModal()}>
+          Agregar Regalo
+        </button>
+
         <ul>
           {gifts.length === 0 ? (
             <p className="emptyList">
@@ -53,17 +76,35 @@ function App() {
           ) : null}
           {gifts.map((gift, i) => {
             return (
-              <li key={i}>
-            <img className="giftPic" alt="Gift" src={gift.url || imgUrl}></img>
-              <div>
-              <span className="line">{gift.name}
-                {gift.quantity !== "" ? ` X${gift.quantity}` : null}</span>
-                <span  className="line who" >{gift.user?gift.user:null}</span>
-
-              </div> 
-                <button onClick={() => deleteGift(i)} className="deleteBtn">
-                  X
-                </button>
+              <li key={gift.id}>
+                <img
+                  className="giftPic"
+                  alt="Gift"
+                  src={gift.url || imgUrl}
+                ></img>
+                <div>
+                  <span className="line">
+                    {gift.name}
+                    {gift.quantity !== "" ? ` X${gift.quantity}` : null}
+                  </span>
+                  <span className="line who">
+                    {gift.user ? gift.user : null}
+                  </span>
+                </div>
+                <div>
+                  <button
+                    onClick={() => toggleModalEdit(gift)}
+                    className="editBtn"
+                  >
+                    E
+                  </button>
+                  <button
+                    onClick={() => deleteGift(gift.id)}
+                    className="deleteBtn"
+                  >
+                    X
+                  </button>
+                </div>
               </li>
             );
           })}
