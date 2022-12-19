@@ -8,8 +8,13 @@ function App() {
 
   const addGift=(gift)=>{
     const temp=[...gifts]
-    temp.push(gift)
-    setGifts(temp)
+    if(gift.length!==0 && !gifts.includes(gift)){
+      temp.push(gift)
+      setGifts(temp)
+    }else{
+      console.log("repetido o vacio")
+    }
+    
   }
 
   const deleteGift=(index)=>{
