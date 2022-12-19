@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const useModal = () => {
-  const newGift={title:"Nuevo Regalo",data:{ name: "", quantity: "",url:"",user:"" ,price:""}}
+  const newGift={title:"Nuevo Regalo",data:{ name: "", quantity: "",url:"",user:"" ,price:"0.00"}}
 
     const [isVisible, setIsVisible] = useState(false);
     const [defaultData, setDefaultData] = useState(newGift)

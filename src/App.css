@@ -36,7 +36,7 @@
 .list ul {
   width: 100%;
   overflow-y: auto;
-  max-height: 50%;
+  max-height: 70%;
   font-size: 1.5rem;
   padding: 0;
   list-style: none;
@@ -176,6 +176,14 @@
   background-color: green;
   border:none;
   width: 1rem;
+  color:#fff
+}
+
+.total {
+  width: 100%;
+  display: block;
+  font-weight: bold;
+  border-top: #fff 1px solid;
   color:#fff
 }
 

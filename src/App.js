@@ -9,16 +9,14 @@ import Loading from "./components/Loading";
 
 function App() {
   const savedGifts = JSON.parse(localStorage.getItem("gifts"));
-  const [gifts, setGifts] = useState(
-    savedGifts || []
-  );
-  const [loading, setLoading] = useState(false)
+  const [gifts, setGifts] = useState(savedGifts || []);
+  const [loading, setLoading] = useState(false);
   const { isVisible, toggleModal, defaultData, toggleModalEdit } = useModal();
   const imgUrl =
     "https://w7.pngwing.com/pngs/627/370/png-transparent-christmas-gift-gifts-to-send-non-stop-miscellaneous-ribbon-wedding.png";
 
   useEffect(() => {
-   // setLoading(true)
+    // setLoading(true)
     //const gifts=req()
     //if(gifts){
     //  setGifts(gifts)
@@ -28,8 +26,6 @@ function App() {
   }, [gifts]);
 
   const addGift = (gift) => {
-  
-
     if (gift.name.length !== 0) {
       const temp = [...gifts];
       const filtered = temp.filter((item) => item.id !== gift.id);
@@ -54,7 +50,6 @@ function App() {
     setGifts(deleted);
   };
 
-
   return (
     <div
       style={{ backgroundImage: `url(${bkgnd})`, backgroundSize: "cover" }}
@@ -66,58 +61,74 @@ function App() {
         add={addGift}
         data={defaultData}
       />
-      {loading?<Loading></Loading>:<div className="list">
-        <h1>Regalos:</h1>
+      {loading ? (
+        <Loading></Loading>
+      ) : (
+        <div className="list">
+          <h1>Regalos:</h1>
 
-        <button  className="openModal" onClick={() => toggleModal()}>
-          Agregar Regalo
-        </button>
+          <button className="openModal" onClick={() => toggleModal()}>
+            Agregar Regalo
+          </button>
 
-        <ul>
-          {gifts.length === 0 ? (
-            <p className="emptyList">
-              No Hay regalos en la lista. Por que no agragas alguno?
-            </p>
-          ) : null}
-          {gifts.map((gift, i) => {
-            return (
-              <li key={gift.id}>
-                <img
-                  className="giftPic"
-                  alt="Gift"
-                  src={gift.url || imgUrl}
-                ></img>
-                <div>
-                  <span className="line">
-                    {gift.name}
-                    {gift.quantity !== "" ? ` ${gift.quantity}u     --$${gift.price*gift.quantity}` : null}
-                  </span>
-                  <span className="line who">
-                    {gift.user ? gift.user : null}
-                  </span>
-                </div>
-                <div>
-                  <button
-                    onClick={() => toggleModalEdit(gift)}
-                    className="editBtn"
-                  >
-                    E
-                  </button>
-                  <button
-                    onClick={() => deleteGift(gift.id)}
-                    className="deleteBtn"
-                  >
-                    X
-                  </button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-        <button onClick={() => setGifts([])} className="deleteAll">
-          Borrar todos
-        </button>
-      </div>}
+          <ul>
+            {gifts.length === 0 ? (
+              <p className="emptyList">
+                No Hay regalos en la lista. Por que no agragas alguno?
+              </p>
+            ) : null}
+            {gifts.map((gift, i) => {
+              return (
+                <li key={gift.id}>
+                  <img
+                    className="giftPic"
+                    alt="Gift"
+                    src={gift.url || imgUrl}
+                  ></img>
+                  <div>
+                    <span className="line">
+                      {gift.name}
+                      {gift.quantity !== ""
+                        ? ` ${gift.quantity}u     --$${(
+                            gift.price * gift.quantity
+                          ).toFixed(2)}`
+                        : null}
+                    </span>
+                    <span className="line who">
+                      {gift.user ? gift.user : null}
+                    </span>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => toggleModalEdit(gift)}
+                      className="editBtn"
+                    >
+                      E
+                    </button>
+                    <button
+                      onClick={() => deleteGift(gift.id)}
+                      className="deleteBtn"
+                    >
+                      X
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          <span className="total">
+            TOTAL:{" "}
+            {gifts
+              .reduce((acc, val) => {
+                return acc + val.price * val.quantity;
+              }, 0)
+              .toFixed(2)}
+          </span>
+          <button onClick={() => setGifts([])} className="deleteAll">
+            Borrar todos
+          </button>
+        </div>
+      )}
     </div>
   );
 }
