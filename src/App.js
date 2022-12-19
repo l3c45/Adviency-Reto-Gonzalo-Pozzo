@@ -64,7 +64,7 @@ function App() {
       <div className="list">
         <h1>Regalos:</h1>
 
-        <button className="openModal" onClick={() => toggleModal()}>
+        <button  className="openModal" onClick={() => toggleModal()}>
           Agregar Regalo
         </button>
 

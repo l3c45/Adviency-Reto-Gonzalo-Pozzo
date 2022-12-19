@@ -11,6 +11,7 @@ function Form({ add, close, defaultData }) {
   return (
     <form className="giftForm" onSubmit={(e) => saveGift(e)}>
       <input
+     
         placeholder="Regalo"
         className="giftInput"
         onChange={(e) =>

@@ -69,7 +69,7 @@
 }
 
 .giftInput:focus,.giftQuantity:focus {
- outline: none; 
+; 
 }
 .giftButton{
   margin:2px;
