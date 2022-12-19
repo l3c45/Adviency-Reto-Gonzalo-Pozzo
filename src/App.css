@@ -12,6 +12,7 @@
 }
 
 .list {
+  min-width: 390px;
   position: relative;
   background-color: #C21010;
   height: 60%;
@@ -93,6 +94,10 @@
   font-weight: bold;
   position: absolute;
   bottom: 10px;
+}
+
+.emptyList{
+  font-size: 1rem;
 }
 
 

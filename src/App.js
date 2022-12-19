@@ -27,6 +27,9 @@ function App() {
        <Form add={addGift}/>
 
         <ul>
+        {
+          gifts.length===0?<p className="emptyList">No Hay regalos en la lista. Por que no agragas alguno?</p>:null
+        }
         {gifts.map((gift,i)=>{
           return <li key={i}  >{gift}<button onClick={()=>deleteGift(i)} className="deleteBtn">X</button></li>
         })}
