@@ -7,6 +7,9 @@ import { nanoid } from "nanoid";
 import { req } from "./API/request";
 import Loading from "./components/Loading";
 import PrevModal from "./components/PrevModal";
+import Sound from "./components/Sounbd";
+
+
 
 function App() {
   const savedGifts = JSON.parse(localStorage.getItem("gifts"));
@@ -70,10 +73,13 @@ setPrev(!prev)
         add={addGift}
         data={defaultData}
       />
+
+     
       {loading ? (
         <Loading></Loading>
       ) : (
         <div className="list">
+        <Sound></Sound>
           <h1>Regalos:</h1>
 
           <button className="openModal" onClick={() => toggleModal()}>
