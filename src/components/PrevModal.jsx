@@ -6,14 +6,15 @@ import "../Modal.css"
 
 
 
+
 const PrevModal = ({ isVisible, hideModal,gifts }) => {
   
  
   return isVisible
     ? createPortal(
         <div className="overlay" >
-        <div className="modal">
-        <h2 className="modalTitle">Lista de Regalos</h2>
+        <div className="modal" id="print-content" >
+        <h2 className="modalTitle" >Lista de Regalos</h2>
           
         <ul>
             
@@ -45,6 +46,9 @@ const PrevModal = ({ isVisible, hideModal,gifts }) => {
 
           <button className="closeModal" onClick={hideModal}>
             Cancelar
+          </button>
+          <button className="print" onClick={()=> window.print()}>
+            Imprimir
           </button>
          
         </div>

@@ -193,8 +193,9 @@ ul {
   bottom: 10px; */
 }
 
-.previsualize {
-  width: 80%;
+.previsualize ,.print{
+  margin : 10px 0;
+  width: 90%;
   background-color: green;
   color: #fff;
   border: none;
@@ -217,3 +218,7 @@ ul {
   /* position: absolute;
   bottom:0px; */
 }
+
+
+
+
