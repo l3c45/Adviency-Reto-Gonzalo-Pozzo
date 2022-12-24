@@ -6,14 +6,15 @@ import useModal from "./hooks/useModal";
 import { nanoid } from "nanoid";
 import { req } from "./API/request";
 import Loading from "./components/Loading";
+import PrevModal from "./components/PrevModal";
 
 function App() {
   const savedGifts = JSON.parse(localStorage.getItem("gifts"));
   const [gifts, setGifts] = useState(savedGifts || []);
   const [loading, setLoading] = useState(false);
+  const [prev,setPrev]=useState(false)
   const { isVisible, toggleModal, defaultData, toggleModalEdit,duplicate } = useModal();
-  const imgUrl =
-    "https://w7.pngwing.com/pngs/627/370/png-transparent-christmas-gift-gifts-to-send-non-stop-miscellaneous-ribbon-wedding.png";
+    
 
   useEffect(() => {
     // setLoading(true)
@@ -24,7 +25,10 @@ function App() {
     //}
     localStorage.setItem("gifts", JSON.stringify(gifts));
   }, [gifts]);
+const toggle=()=>{
+setPrev(!prev)
 
+}
   const addGift = (gift) => {
     if (gift.name.length !== 0) {
       const temp = [...gifts];
@@ -55,6 +59,11 @@ function App() {
       style={{ backgroundImage: `url(${bkgnd})`, backgroundSize: "cover" }}
       className="App"
     >
+    <PrevModal
+    isVisible={prev}
+        hideModal={toggle}
+        gifts={gifts}
+        ></PrevModal>
       <Modal
         isVisible={isVisible}
         hideModal={toggleModal}
@@ -79,7 +88,7 @@ function App() {
                   <img
                     className="giftPic"
                     alt="Gift"
-                    src={gift.url || imgUrl}
+                    src={gift.url}
                   ></img>
                   <div>
                     <span className="line">
@@ -131,9 +140,14 @@ function App() {
               }, 0)
               .toFixed(2)}
           </span>
+         
           <button onClick={() => setGifts([])} className="deleteAll">
             Borrar todos
           </button>
+          <button onClick={() => {toggle()}} className="previsualize">
+           Previsualizar
+          </button>
+          
             </div>}
           
         </div>

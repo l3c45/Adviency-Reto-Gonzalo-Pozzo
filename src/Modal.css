@@ -21,11 +21,11 @@
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: 30%;
+  top: 40%;
   left: 50%;
   background-color: #c21010;
 
-  height: 50%;
+  height: auto;
   transform: translate(-50%, -50%);
 }
 
@@ -45,3 +45,24 @@
   height: 2rem;
   width: 90%;
 }
+
+ul {
+  width: 90%;
+  padding: 0;
+}
+
+ul li {
+margin: 5px 0 ;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+ul li img,ul li span  {
+  display: inline;
+}
+
+ul li div {
+  margin: 0 10px;
+}
+

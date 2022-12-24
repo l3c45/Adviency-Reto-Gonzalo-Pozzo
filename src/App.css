@@ -175,9 +175,27 @@ ul {
   color: #fff;
 }
 
+.bottomButtons {
+
+
+}
+
 .deleteAll {
+  margin : 10px 0;
   width: 80%;
   background-color: red;
+  color: #fff;
+  border: none;
+  height: 2rem;
+  font-weight: bold;
+  padding:10px 0
+  /* position: absolute;
+  bottom: 10px; */
+}
+
+.previsualize {
+  width: 80%;
+  background-color: green;
   color: #fff;
   border: none;
   height: 2rem;

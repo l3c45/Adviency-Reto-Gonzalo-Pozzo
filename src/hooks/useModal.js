@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 const useModal = () => {
   const newGift = {
     title: "Nuevo Regalo",
-    data: { name: "", quantity: "", url: "", user: "", price: "0.00" },
+    data: { name: "", quantity: "", user: "", price: "0.00",url:"https://picsum.photos/200" },
   };
 
   const [isVisible, setIsVisible] = useState(false);
