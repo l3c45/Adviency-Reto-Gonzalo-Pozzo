@@ -9,6 +9,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal {
@@ -17,12 +20,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: fixed;
-  top: 40%;
-  left: 50%;
+  
   background-color: #c21010;
   height: auto;
-  transform: translate(-50%, -50%);
+  
 }
 
 .modalTitle {
@@ -65,5 +66,21 @@ ul li div {
 @media print {
   .overlay {
     background-color: #fff;
+   
   }
   }
+
+  @media (max-width: 440px) {
+    .modal {
+      padding-bottom: 2%;
+      width: 90%;
+      height: fit-content;
+     
+    }
+
+    .overlay {
+      width: 100%;
+    }
+    
+  }
+  
