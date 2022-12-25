@@ -3,18 +3,15 @@
   src: local("Christbell"), url(./fonts/Christbell.ttf) format("truetype");
 }
 .overlay {
-    
   background-color: #070707ee;
-  
   height: 100vh;
   width: 100vw;
   position: absolute;
   top: 0;
   left: 0;
- 
 }
+
 .modal {
-   
   padding-bottom: 2%;
   width: 390px;
   display: flex;
@@ -24,7 +21,6 @@
   top: 40%;
   left: 50%;
   background-color: #c21010;
-
   height: auto;
   transform: translate(-50%, -50%);
 }
@@ -68,9 +64,6 @@ ul li div {
 
 @media print {
   .overlay {
-    
     background-color: #fff;
-    
-   
   }
   }

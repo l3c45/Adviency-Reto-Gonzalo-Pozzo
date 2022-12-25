@@ -2,14 +2,8 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import "../Modal.css"
 
-
-
-
-
-
 const PrevModal = ({ isVisible, hideModal,gifts }) => {
   
- 
   return isVisible
     ? createPortal(
         <div className="overlay" >
@@ -56,4 +50,6 @@ const PrevModal = ({ isVisible, hideModal,gifts }) => {
         document.body,
       )
     : null;
-};export default PrevModal;
+};
+
+export default PrevModal;

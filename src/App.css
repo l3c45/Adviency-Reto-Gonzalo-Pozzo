@@ -3,7 +3,11 @@
   src: local("Christbell"), url(./fonts/Christbell.ttf) format("truetype");
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;700&display=swap");
+
 .App {
+  font-family: "Inter", sans-serif;
+  color: #fff;
   position: relative;
   text-align: center;
   height: 100vh;
@@ -20,7 +24,6 @@
   max-height: 90%;
   display: flex;
   align-items: center;
- 
   flex-direction: column;
   padding: 1rem;
   border: 2px solid #fff;
@@ -38,8 +41,7 @@ ul {
 .list ul {
   width: 90%;
   overflow-y: auto;
- max-height: 50%;
-  
+  max-height: 50%;
   padding: 0;
   list-style: none;
 }
@@ -69,9 +71,11 @@ ul {
   height: 2rem;
   width: 90%;
 }
+
 .giftInputGroup {
   display: flex;
   width: 90%;
+  margin: 2px;
 }
 .giftInputName {
   border: none;
@@ -91,9 +95,7 @@ ul {
   background-color: green;
   border: none;
 }
-.giftInput:focus,
-.giftQuantity:focus {
-}
+
 .giftButton {
   margin: 2px;
   padding: 0;
@@ -109,23 +111,21 @@ ul {
   opacity: 0.9;
 }
 
-.giftQuantity {
-  margin: 2px;
-  border-left: 1px solid red;
-  padding: 0;
-  border: none;
-  height: 2rem;
-  width: 90%;
-}
-
-.deleteBtn {
+.btn {
+  height: 50%;
   margin: 0 5px;
-  background-color: red;
   border: none;
   width: 1rem;
   color: #fff;
 }
 
+.deleteBtn {
+  background-color: red;
+}
+
+.editBtn {
+  background-color: green;
+}
 
 .emptyList {
   font-size: 1rem;
@@ -133,7 +133,7 @@ ul {
 
 .giftPic {
   height: 3rem;
-  width: 4rem;
+  width: 3rem;
 }
 
 .openModal {
@@ -143,13 +143,18 @@ ul {
   background-color: green;
   border: none;
   height: 2rem;
+  color: #fff;
 }
-.line {
 
-  
-  text-align: left;
-  display: block;
-  font-size: 1.5rem;
+.text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  max-width: 60%;
+  overflow: hidden;
+  align-items: flex-start;
+  flex-grow: 1;
 }
 
 .who {
@@ -158,17 +163,13 @@ ul {
   font-size: 1rem;
 }
 
-.editBtn {
-  margin: 0 5px;
-  background-color: green;
-  border: none;
-  width: 1rem;
-  color: #fff;
+.buttonsContainer {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .total {
-  /* position: absolute;
-  bottom: 50px; */
   width: 100%;
   display: block;
   font-weight: bold;
@@ -176,58 +177,41 @@ ul {
   color: #fff;
 }
 
-.bottomButtons {
-
-
-}
-
 .deleteAll {
-  margin : 10px 0;
-  width: 80%;
+  margin: 10px 0;
+  width: 90%;
   background-color: red;
   color: #fff;
   border: none;
   height: 2rem;
   font-weight: bold;
-  padding:10px 0
-  /* position: absolute;
-  bottom: 10px; */
+  padding: 10px 0;
 }
 
-.previsualize ,.print{
-  margin : 10px 0;
+.previsualize,
+.print {
+  margin: 10px 0;
   width: 90%;
   background-color: green;
   color: #fff;
   border: none;
   height: 2rem;
   font-weight: bold;
-  padding:10px 0
-  /* position: absolute;
-  bottom: 10px; */
+  padding: 10px 0;
 }
 
- 
-.footer{
+.footer {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 5rem;
   width: 95%;
   background-color: #c21010;
-  /* position: absolute;
-  bottom:0px; */
 }
 
 .sound {
-  color:#fff;
+  color: #fff;
   position: absolute;
   right: 20px;
   font-size: 1.5rem;
- 
-
 }
-
-
-

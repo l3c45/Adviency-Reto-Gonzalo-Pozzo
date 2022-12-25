@@ -3,11 +3,8 @@ import { createPortal } from "react-dom";
 import "../Modal.css"
 import Form from "./Form";
 
-
-
 const Modal = ({ isVisible, hideModal,add,data }) => {
   
- 
   return isVisible
     ? createPortal(
         <div className="overlay" >
@@ -23,4 +20,6 @@ const Modal = ({ isVisible, hideModal,add,data }) => {
         document.body,
       )
     : null;
-};export default Modal;
+};
+
+export default Modal;

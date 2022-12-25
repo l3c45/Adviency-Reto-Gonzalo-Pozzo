@@ -1,4 +1,3 @@
-import { random } from "nanoid";
 import React, { useState } from "react";
 
 function Form({ add, close, defaultData }) {
@@ -71,7 +70,8 @@ function Form({ add, close, defaultData }) {
         value={input.price}
       ></input>
       <input
-        className="giftQuantity"
+       placeholder="Cantidad"
+        className="giftInput giftQuantity"
         onChange={(e) =>
           setInput((prev) => {
             return { ...prev, quantity: e.target.value };

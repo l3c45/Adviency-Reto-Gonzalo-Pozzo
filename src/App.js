@@ -1,38 +1,32 @@
+import { useState, useEffect } from "react";
 import bkgnd from "./assets/background.jpeg";
 import "./App.css";
-import { useState, useEffect } from "react";
-import Modal from "./components/Modal";
 import useModal from "./hooks/useModal";
-import { nanoid } from "nanoid";
-import { req } from "./API/request";
-import Loading from "./components/Loading";
+import Modal from "./components/Modal";
 import PrevModal from "./components/PrevModal";
+import { nanoid } from "nanoid";
 import Sound from "./components/Sounbd";
-import Snowfall from 'react-snowfall'
+import Snowfall from "react-snowfall";
 
-
+//import { req } from "./API/request";
+//import Loading from "./components/Loading";
 
 function App() {
+
   const savedGifts = JSON.parse(localStorage.getItem("gifts"));
   const [gifts, setGifts] = useState(savedGifts || []);
-  const [loading, setLoading] = useState(false);
-  const [prev,setPrev]=useState(false)
-  const { isVisible, toggleModal, defaultData, toggleModalEdit,duplicate } = useModal();
-    
+  const [prev, setPrev] = useState(false);
+  const { isVisible, toggleModal, defaultData, toggleModalEdit, duplicate } =
+    useModal();
 
   useEffect(() => {
-    // setLoading(true)
-    //const gifts=req()
-    //if(gifts){
-    //  setGifts(gifts)
-    //  setLoading(false)
-    //}
     localStorage.setItem("gifts", JSON.stringify(gifts));
   }, [gifts]);
-const toggle=()=>{
-setPrev(!prev)
 
-}
+  const toggle = () => {
+    setPrev(!prev);
+  };
+
   const addGift = (gift) => {
     if (gift.name.length !== 0) {
       const temp = [...gifts];
@@ -63,14 +57,8 @@ setPrev(!prev)
       style={{ backgroundImage: `url(${bkgnd})`, backgroundSize: "cover" }}
       className="App"
     >
-    <Snowfall 
-      snowflakeCount={200}
-    />
-    <PrevModal
-    isVisible={prev}
-        hideModal={toggle}
-        gifts={gifts}
-        ></PrevModal>
+      <Snowfall snowflakeCount={200} />
+      <PrevModal isVisible={prev} hideModal={toggle} gifts={gifts} />
       <Modal
         isVisible={isVisible}
         hideModal={toggleModal}
@@ -78,12 +66,9 @@ setPrev(!prev)
         data={defaultData}
       />
 
-     
-      {loading ? (
-        <Loading></Loading>
-      ) : (
+      {
         <div className="list">
-        <Sound></Sound>
+          <Sound></Sound>
           <h1>Regalos:</h1>
 
           <button className="openModal" onClick={() => toggleModal()}>
@@ -91,16 +76,11 @@ setPrev(!prev)
           </button>
 
           <ul>
-            
             {gifts.map((gift, i) => {
               return (
                 <li key={gift.id}>
-                  <img
-                    className="giftPic"
-                    alt="Gift"
-                    src={gift.url}
-                  ></img>
-                  <div>
+                  <img className="giftPic" alt="Gift" src={gift.url}></img>
+                  <div className="text">
                     <span className="line">
                       {gift.name}
                       {gift.quantity !== ""
@@ -113,22 +93,19 @@ setPrev(!prev)
                       {gift.user ? gift.user : null}
                     </span>
                   </div>
-                  <div>
+                  <div className="buttonsContainer">
                     <button
                       onClick={() => toggleModalEdit(gift)}
-                      className="editBtn"
+                      className="btn editBtn"
                     >
                       E
                     </button>
-                    <button
-                      onClick={() => duplicate(gift)}
-                      className="editBtn"
-                    >
+                    <button onClick={() => duplicate(gift)} className="btn editBtn">
                       D
                     </button>
                     <button
                       onClick={() => deleteGift(gift.id)}
-                      className="deleteBtn"
+                      className="btn deleteBtn"
                     >
                       X
                     </button>
@@ -138,30 +115,35 @@ setPrev(!prev)
             })}
           </ul>
           {gifts.length === 0 ? (
-              <p className="emptyList">
-                No Hay regalos en la lista. Por que no agragas alguno?
-              </p>
-            ) : <div className="footer">
-            <span className="total">
-            TOTAL:{" "}
-            {gifts
-              .reduce((acc, val) => {
-                return acc + val.price * val.quantity;
-              }, 0)
-              .toFixed(2)}
-          </span>
-         
-          <button onClick={() => setGifts([])} className="deleteAll">
-            Borrar todos
-          </button>
-          <button onClick={() => {toggle()}} className="previsualize">
-           Previsualizar
-          </button>
-          
-            </div>}
-          
+            <p className="emptyList">
+              No Hay regalos en la lista. Por que no agragas alguno?
+            </p>
+          ) : (
+            <div className="footer">
+              <span className="total">
+                TOTAL:{" "}
+                {gifts
+                  .reduce((acc, val) => {
+                    return acc + val.price * val.quantity;
+                  }, 0)
+                  .toFixed(2)}
+              </span>
+
+              <button onClick={() => setGifts([])} className="deleteAll">
+                Borrar todos
+              </button>
+              <button
+                onClick={() => {
+                  toggle();
+                }}
+                className="previsualize"
+              >
+                Previsualizar
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      }
     </div>
   );
 }
