@@ -8,6 +8,7 @@ import { req } from "./API/request";
 import Loading from "./components/Loading";
 import PrevModal from "./components/PrevModal";
 import Sound from "./components/Sounbd";
+import Snowfall from 'react-snowfall'
 
 
 
@@ -62,6 +63,9 @@ setPrev(!prev)
       style={{ backgroundImage: `url(${bkgnd})`, backgroundSize: "cover" }}
       className="App"
     >
+    <Snowfall 
+      snowflakeCount={200}
+    />
     <PrevModal
     isVisible={prev}
         hideModal={toggle}
